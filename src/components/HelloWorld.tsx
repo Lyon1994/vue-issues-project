@@ -4,8 +4,9 @@ export interface HelloWorldProps {
   msg: string;
 }
 
-export default defineComponent<HelloWorldProps>((props) => {
-  const msg = ref(props.msg);
+export default defineComponent<HelloWorldProps>((props, { attrs }) => {
+  const msg = ref(attrs.msg);
+  console.log('props', props, 'attrs', attrs);
   if (!props.msg) {
     console.error(
       `Can not get props from defineComponent function in tsx file: props.msg=${props.msg}`
